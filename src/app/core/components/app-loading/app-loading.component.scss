@@ -1,0 +1,15 @@
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: darkgrey;
+  opacity: 0.4;
+  .spinner-wrap {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% -50%);
+    position: absolute;
+  }
+}

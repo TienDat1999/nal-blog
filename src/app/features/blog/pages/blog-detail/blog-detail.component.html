@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h1>
+        {{ blogDetail?.title }}
+      </h1>
+    </div>
+    <div class="col-1" *ngIf="blogDetail">
+      <button type="button" class="btn btn-outline-dark">
+        <a [routerLink]="['/blog-editing', blogDetail.id]">
+          <i class="bi bi-pencil-fill"></i>
+        </a>
+      </button>
+    </div>
+  </div>
+  <div class="mb-sm-2 mb-md-5">
+    <small class="text-body-secondary"
+      >{{ blogDetail?.updated_at | date: 'medium' }}
+    </small>
+  </div>
+  <img
+    width="100%"
+    *ngIf="blogDetail?.image?.url"
+    [src]="blogDetail?.image?.url"
+    class="card-img-top rounded-1 mb-sm-2 mb-md-5"
+    style="object-fit: cover; max-height: 400px" />
+  <p>
+    {{ blogDetail?.content }}
+  </p>
+</div>

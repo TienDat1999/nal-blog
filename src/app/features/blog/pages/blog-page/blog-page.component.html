@@ -1,0 +1,73 @@
+<div class="row mb-5" style="width: 100%">
+  <div
+    class="cover-blog p-4 p-md-5 text-white rounded bg-dark position-relative">
+    <!--      <img class="position-absolute" src="assets/images/blog-cover.jpeg">-->
+    <div class="col-md-6 px-0 position-relative">
+      <h1 class="display-4 font-italic">
+        Title of a longer featured blog post
+      </h1>
+      <p class="lead my-3">
+        Multiple lines of text that form the lede, informing new readers quickly
+        and efficiently about what’s most interesting in this post’s contents.
+      </p>
+      <p class="lead mb-0">
+        <a href="#" class="text-white font-weight-bold">Continue reading...</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 mb-sm-2 mb-md-3">
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          [formControl]="searchForm"
+          type="search"
+          placeholder="Search"
+          aria-label="Search" />
+      </form>
+    </div>
+
+    <div class="col-lg-9 col">
+      <div class="mb-sm-2 mb-md-3 mb-5">
+        <div class="d-flex gap-2">
+          <select
+            class="form-select"
+            style="width: 110px"
+            (change)="sortBlogChange($event)">
+            <option value="desc" selected>Latest</option>
+            <option value="asc">Earliest</option>
+          </select>
+          <button type="button" class="btn btn-outline-primary">
+            <a [routerLink]="['/blog-editing', 'add-new']">
+              <i class="bi bi-plus"></i> Add
+            </a>
+          </button>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4">
+        <ng-container *ngIf="!isloading; else waiting">
+          <div class="col" *ngFor="let item of blogList">
+            <app-blog-card [blogInfo]="item"> </app-blog-card>
+          </div>
+        </ng-container>
+      </div>
+      <div class="d-flex justify-content-center" *ngIf="!isloading && count">
+        <app-pagination
+          [currentPage]="currentPage"
+          [totalPages]="totalPages"
+          (pageChange)="onHandlePageChange($event)">
+        </app-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #waiting>
+  <app-card-skeleton> </app-card-skeleton>
+  <app-card-skeleton> </app-card-skeleton>
+  <app-card-skeleton> </app-card-skeleton>
+  <app-card-skeleton> </app-card-skeleton>
+  <app-card-skeleton> </app-card-skeleton>
+</ng-template>

@@ -1,0 +1,17 @@
+<div
+  #alertContainer
+  class="position-fixed top-0 end-0 p-3"
+  style="z-index: 1000">
+  <div
+    *ngFor="let message of messages"
+    class="alert alert-dismissible fade show"
+    [ngClass]="'alert-' + message.type"
+    role="alert">
+    {{ message.text }}
+    <button
+      type="button"
+      class="btn-close"
+      (click)="removeMessage(message)"
+      aria-label="Close"></button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.cv-img-dropzone {
+  border: 1px dashed;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-control-file {
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+}
