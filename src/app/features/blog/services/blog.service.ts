@@ -33,7 +33,7 @@ export class BlogService {
       .pipe(
         catchError(this.handleError<any>('getBlogs', null)),
         map(res => {
-          return { data: res.data.items, pagination: res.pagination };
+          return { data: res?.data?.items, pagination: res?.pagination };
         })
       );
   }

@@ -56,9 +56,11 @@ export class BlogPageComponent implements OnInit {
       .getBlogs(this.blogFilter)
       .pipe(finalize(() => (this.isloading = false)))
       .subscribe(res => {
-        this.blogList = res.data;
-        this.totalPages = res.pagination.total;
-        this.count = res.pagination.count;
+        if(res.data) {
+          this.blogList = res.data;
+          this.totalPages = res.pagination.total;
+          this.count = res.pagination.count;
+        }
       });
     //this.blogList = await this.generateData();
   }

@@ -8,6 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from '@app/core/core.module';
+import {StoreModule} from "@ngrx/store";
+import {metaReducers, reducers} from "@app/store";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
   imports: [
@@ -17,6 +20,8 @@ import { CoreModule } from '@app/core/core.module';
     HttpClientModule,
     NgbModule,
     CoreModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument(),
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
